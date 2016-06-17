@@ -1,0 +1,35 @@
+{
+  "src_folders" : ["tests"],
+  "selenium" : {
+    "start_process" : false,
+    "server_path" : "",
+    "log_path" : "",
+    "host" : "hub",
+    "port" : 4444
+  },
+  "test_settings" : {
+    "default" : {
+      "launch_url": "about:blank",
+      "selenium_host"  : "hub",
+      "desiredCapabilities": {
+        "javascriptEnabled": true
+      },
+      "screenshots" : {
+        "enabled" : true,
+        "on_failure" : true,
+        "on_error" : false,
+        "path" : ""
+      }
+    },
+    "chrome" : {
+      "desiredCapabilities": {
+        "browserName": "chrome"
+      }
+    },
+    "firefox" : {
+      "desiredCapabilities": {
+        "browserName": "firefox"
+      }
+    }
+  }
+}

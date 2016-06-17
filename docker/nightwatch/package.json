@@ -1,0 +1,21 @@
+{
+  "name": "bazgu-tests",
+  "version": "1.0.0",
+  "description": "A dockerized environment for executing tests for bazgu",
+  "keywords": [
+    "bazgu",
+    "docker",
+    "selenium",
+    "grid",
+    "nightwatch",
+    "javascript"
+  ],
+  "scripts": {
+    "test": "nightwatch -e chrome,firefox"
+  },
+  "author": "George Kotchlamazashvili (georgedot@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "nightwatch": "^0.9.4"
+  }
+}

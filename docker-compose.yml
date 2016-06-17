@@ -1,0 +1,60 @@
+version: '2'
+
+services:
+  nightwatch:
+    build: 
+      context: ./docker/nightwatch
+      dockerfile: Dockerfile
+    volumes:
+      - ./docker/nightwatch:/usr/src/nightwatch
+    depends_on:
+      - hub
+      - bazgu
+    links:
+      - hub
+      - bazgu
+    networks:
+      - bazgu
+      - hub
+
+  bazgu:
+    build: 
+      context: ./docker/bazgu/standalone
+      dockerfile: Dockerfile
+    networks:
+      - bazgu
+
+  hub:
+    image: selenium/hub:latest
+    ports:
+      - "4444:4444"
+    networks:
+      - hub
+
+  firefox:
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+    image: selenium/node-firefox:latest
+    depends_on:
+      - hub
+    links:
+      - hub
+    networks:
+      - hub
+
+  chrome:
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+    image: selenium/node-chrome:latest
+    depends_on:
+      - hub
+    links:
+      - hub
+    networks:
+      - hub
+
+networks:
+  hub:
+    driver: bridge
+  bazgu:
+    driver: bridge

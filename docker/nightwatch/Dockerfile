@@ -7,6 +7,6 @@ RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
 ADD . $APP_HOME
-RUN npm install --ignore-scripts --unsafe-perm --loglevel warn
+RUN npm install --ignore-scripts --unsafe-perm --loglevel warn && sync
 
-CMD sync && ls -lah && npm test
+CMD npm test

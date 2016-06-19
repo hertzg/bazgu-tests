@@ -9,4 +9,7 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
+screenshots
+tests_output
+
 npm-debug.log

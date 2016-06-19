@@ -6,15 +6,15 @@ services:
       context: ./docker/nightwatch
       dockerfile: Dockerfile
     volumes:
-      - ./docker/nightwatch:/usr/src/nightwatch
+      - ./docker/nightwatch:/usr/src/app
     depends_on:
-      - hub
       - bazgu
+      - hub
+      - firefox
+      - chrome
     links:
       - hub
-      - bazgu
     networks:
-      - bazgu
       - hub
 
   bazgu:
@@ -41,6 +41,7 @@ services:
       - hub
     networks:
       - hub
+      - bazgu
 
   chrome:
     environment:
@@ -52,6 +53,7 @@ services:
       - hub
     networks:
       - hub
+      - bazgu
 
 networks:
   hub:
